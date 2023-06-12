@@ -1,3 +1,5 @@
+// This file is a factory that creates To-Do objects (Or "tasks" as I call it)
+
 let idGenerator = 0;
 
 const newTask = (title, description, dueDate, priority) => {
@@ -15,8 +17,7 @@ const newTask = (title, description, dueDate, priority) => {
 	const setDueDate = (newDueDate) => (dueDate = newDueDate);
 	const setPrio = (newPrio) => (priority = newPrio);
 
-	// increment idGen so there are no similar ID in the whole universe
-	idGenerator++;
+	idGenerator++; // increment idGen so there are no similar ID in the whole universe
 	return {
 		getID,
 		getTitle,

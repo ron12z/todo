@@ -1,5 +1,6 @@
 import Todo from "./modules/todo.js";
 import Project from "./modules/project.js";
+
 const title1 = "Sample Title";
 const description1 = "Sample description";
 const dueDate1 = "Need a date example here";
@@ -14,3 +15,25 @@ const sample1 = Todo.newTask(title1, description1, dueDate1, priority1);
 const sample2 = Todo.newTask(title2, description2, dueDate2, priority2);
 
 const Project1 = Project.newProject("General");
+const Project2 = Project.newProject("General");
+
+console.log(Project1.getTasklist());
+Project1.addItem(sample1);
+console.log(Project1.getTasklist());
+Project1.addItem(sample2);
+console.log(Project1.getTasklist());
+Project1.removeItem(sample2);
+console.log(Project1.getTasklist());
+Project1.removeItem(sample1);
+console.log(Project1.getTasklist());
+
+console.log("------------");
+console.log(Project2.getTasklist());
+Project2.addItem(sample1);
+console.log(Project2.getTasklist());
+Project2.addItem(sample2);
+console.log(Project2.getTasklist());
+Project2.removeItem(sample2);
+console.log(Project2.getTasklist());
+Project2.removeItem(sample1);
+console.log(Project2.getTasklist());
