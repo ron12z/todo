@@ -3,24 +3,28 @@
 let idGenerator = 0;
 
 const newProject = (projectName) => {
-	// Initial list of to-do's
-	let tasklist = [];
-	const id = idGenerator;
-	idGenerator++; // increment idGen so there are no similar ID in the whole universe
+	// Private variables
+	let _tasklist = [];
+	const _id = idGenerator;
 
 	// Getters
-	const getID = () => id;
-	const getTasklist = () => tasklist;
+	const getID = () => _id;
+	const getTasklist = () => _tasklist;
 	const getProjectName = () => projectName;
 
 	// Setter
 	const setProjectName = (newName) => (projectName = newName);
 
 	// Methods
-	const addItem = (TodoItem) => tasklist.push(TodoItem);
+	const addItem = (TodoItem) => _tasklist.push(TodoItem);
 	const removeItem = (TodoItem) => {
-		tasklist = tasklist.filter((task) => task.getID() != TodoItem.getID());
+		_tasklist = _tasklist.filter((task) => task.getID() != TodoItem.getID());
 	};
+
+	// Log and ID increment
+	console.log(`PROJECT: ${projectName} ID: ${_id} created.`);
+	idGenerator++;
+
 	return {
 		getID,
 		getTasklist,

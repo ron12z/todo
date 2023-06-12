@@ -3,9 +3,11 @@
 let idGenerator = 0;
 
 const newTask = (title, description, dueDate, priority) => {
+	// Private variables
+	const _id = idGenerator;
+
 	// Getters
-	const id = idGenerator;
-	const getID = () => id;
+	const getID = () => _id;
 	const getTitle = () => title;
 	const getDesc = () => description;
 	const getDueDate = () => dueDate;
@@ -17,7 +19,10 @@ const newTask = (title, description, dueDate, priority) => {
 	const setDueDate = (newDueDate) => (dueDate = newDueDate);
 	const setPrio = (newPrio) => (priority = newPrio);
 
-	idGenerator++; // increment idGen so there are no similar ID in the whole universe
+	// Log and ID increment
+	console.log(`TODO: ${title} ID: ${_id} created.`);
+	idGenerator++;
+
 	return {
 		getID,
 		getTitle,
