@@ -1,1 +1,1 @@
-(()=>{"use strict";console.log("I am imported and working")})();
+(()=>{"use strict";let e=0;const t=(t,a,l,r)=>{const s=e;return e++,{getID:()=>s,getTitle:()=>t,getDesc:()=>a,getDueDate:()=>l,getPrio:()=>r,setTitle:e=>t=e,setDesc:e=>a=e,setDueDate:e=>l=e,setPrio:e=>r=e}};t("Sample Title","Sample description","Need a date example here","normal"),t("Another Sample","Another sample description","Need a date example here","normal"),(e=>{let t=[]})("General")})();
