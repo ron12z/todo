@@ -1,59 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script src="main.js" defer></script>
-		<link
-			rel="stylesheet"
-			href="../node_modules/modern-normalize/modern-normalize.css"
-		/>
-		<link rel="stylesheet" href="style.css" />
-		<title>To-do</title>
-	</head>
-	<body>
-		<header></header>
-		<main>
-			<button id="AddTaskBtn">Add Task</button>
-			<dialog id="todoDialog">
-				<form id="todoForm" name="todo">
-					<div class="todo-form-item">
-						<label for="todoTitle">Title</label>
-						<input type="text" name="todoTitle" id="todoTitle" />
-					</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="main.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="../node_modules/modern-normalize/modern-normalize.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>To-do</title>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <button id="AddTaskBtn">Add Task</button>
+      <dialog id="todoDialog">
+        <form id="todoForm" name="todo">
+          <fieldset>
+            <legend>New Task</legend>
+            <div class="todo-form-item">
+              <label for="todoTitle">Title</label>
+              <input type="text" name="todoTitle" id="todoTitle" />
+            </div>
 
-					<div class="todo-form-item">
-						<label for="todoDescription">Description</label>
-						<input type="text" name="todoDescription" id="todoDescription" />
-					</div>
+            <div class="todo-form-item">
+              <label for="todoDescription">Description</label>
+              <input type="text" name="todoDescription" id="todoDescription" />
+            </div>
 
-					<div class="todo-form-item">
-						<label for="todoDue">Due</label>
-						<input type="date" name="todoDue" id="todoDue" />
-					</div>
+            <div class="todo-form-item">
+              <label for="todoDue">Due</label>
+              <input type="date" name="todoDue" id="todoDue" />
+            </div>
 
-					<div class="todo-form-item">
-						<label for="todoProject">Project</label>
-						<select name="todoProject" id="todoProject"></select>
-					</div>
+            <div class="todo-form-item">
+              <label for="todoProject">Project</label>
+              <select name="todoProject" id="todoProject"></select>
+            </div>
 
-					<div class="todo-form-item">
-						<label for="todoPrio">Priority</label>
-						<select name="todoPrio" id="todoPrio">
-							<option value="unimportant">Unimportant</option>
-							<option value="normal" selected>Normal</option>
-							<option value="urgent">Urgent</option>
-						</select>
-					</div>
+            <div class="todo-form-item">
+              <label for="todoPrio">Priority</label>
+              <select name="todoPrio" id="todoPrio">
+                <option value="unimportant">Unimportant</option>
+                <option value="normal" selected>Normal</option>
+                <option value="urgent">Urgent</option>
+              </select>
+            </div>
 
-					<div class="todo-form-buttons">
-						<button id="newTodo">SUBMIT</button>
-						<button id="todoCloseModal">CLOSE</button>
-						<button id="todoCancelModal">CANCEL</button>
-					</div>
-				</form>
-			</dialog>
-		</main>
-		<footer><p>Created by @aarontalua</p></footer>
-	</body>
+            <div class="todo-form-buttons">
+              <button id="newTodo">SUBMIT</button>
+              <button id="todoCloseBtn">CLOSE</button>
+              <button id="todoCancelBtn">CANCEL</button>
+            </div>
+          </fieldset>
+        </form>
+      </dialog>
+
+      <button id="AddProjectBtn">Add Project</button>
+      <dialog id="projectDialog">
+        <form id="projectForm" name="project">
+          <fieldset>
+            <legend>New Project</legend>
+            <div class="project-form-item">
+              <label for="projectName">Project Name</label>
+              <input type="text" id="projectName" />
+            </div>
+            <div class="project-form-item">
+              <label for="projectDue">Due Date</label>
+              <input type="date" name="projectDue" id="projectDue" />
+            </div>
+            <div class="project-form-buttons">
+              <button id="projectSubmitBtn">SUBMIT</button>
+              <button id="projectCloseBtn">CLOSE</button>
+              <button id="projectCancelBtn">CANCEL</button>
+            </div>
+          </fieldset>
+        </form>
+      </dialog>
+    </main>
+    <footer><p>Created by @aarontalua</p></footer>
+  </body>
 </html>
