@@ -20,7 +20,7 @@ const newTask = (title, description, dueDate, priority) => {
 	const setPrio = (newPrio) => (priority = newPrio);
 
 	// Log and ID increment
-	console.log(`TODO: ${title} ID: ${_id} created.`);
+	console.log(`TODO: [${title}] created. ID: ${_id}`);
 	idGenerator++;
 
 	return {
