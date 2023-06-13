@@ -13,7 +13,47 @@
 	</head>
 	<body>
 		<header></header>
-		<main></main>
+		<main>
+			<button id="AddTaskBtn">Add Task</button>
+			<dialog id="todoDialog">
+				<form id="todoForm" name="todo">
+					<div class="todo-form-item">
+						<label for="todoTitle">Title</label>
+						<input type="text" name="todoTitle" id="todoTitle" />
+					</div>
+
+					<div class="todo-form-item">
+						<label for="todoDescription">Description</label>
+						<input type="text" name="todoDescription" id="todoDescription" />
+					</div>
+
+					<div class="todo-form-item">
+						<label for="todoDueDate">Due</label>
+						<input type="date" name="todoDue" id="todoDue" />
+					</div>
+
+					<div class="todo-form-item">
+						<label for="todoProject">Project</label>
+						<select name="todoProject" id="todoProject"></select>
+					</div>
+
+					<div class="todo-form-item">
+						<label for="todoPrio">Priority</label>
+						<select name="todoPrio" id="todoPrio">
+							<option value="unimportant">Unimportant</option>
+							<option value="normal" selected>Normal</option>
+							<option value="urgent">Urgent</option>
+						</select>
+					</div>
+
+					<div class="todo-form-buttons">
+						<button id="newTodo">SUBMIT</button>
+						<button id="todoCloseModal">CLOSE</button>
+						<button id="todoCancelModal">CANCEL</button>
+					</div>
+				</form>
+			</dialog>
+		</main>
 		<footer><p>Created by @aarontalua</p></footer>
 	</body>
 </html>
