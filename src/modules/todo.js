@@ -1,6 +1,6 @@
 // This file is a factory that creates To-Do objects (Or "tasks" as I call it)
 
-let idGenerator = 0;
+let idGenerator = 1;
 
 const newTask = (title, description, dueDate, priority) => {
 	// Private variables

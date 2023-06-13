@@ -16,6 +16,11 @@ const todoModalInit = () => {
 	});
 };
 
+const renderAllTasks = () => {
+	const _tasklist = Logic.getAllTasks();
+	// Render here
+};
+
 const resetProjectPicker = () => {
 	_projectPicker.innerHTML = "";
 };

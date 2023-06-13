@@ -1,6 +1,6 @@
 // This file is a factory that creates Project objects
 
-let _idGenerator = 0;
+let _idGenerator = 1;
 
 const newProject = (projectName) => {
 	// Private variables

@@ -10,6 +10,17 @@ const _ProjectList = [];
 // Getters
 const getProjectList = () => _ProjectList;
 
+const getAllTasks = () => {
+	const _allTasks = [];
+	_ProjectList.forEach((Project) => {
+		const _tasklist = Project.getTasklist();
+		_tasklist.forEach((task) => {
+			_allTasks.push(task);
+		});
+	});
+	return _allTasks;
+};
+
 // Methods
 const createProject = (projectName) => {
 	const newProject = Project.newProject(projectName);
@@ -38,5 +49,12 @@ const createTask = (e) => {
 
 //Create Initial Project
 createProject("General");
+createProject("Office");
 
-export default { createProject, deleteProject, createTask, getProjectList };
+export default {
+	getProjectList,
+	getAllTasks,
+	createProject,
+	deleteProject,
+	createTask,
+};
