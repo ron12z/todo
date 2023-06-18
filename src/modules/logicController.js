@@ -21,6 +21,28 @@ const getAllTasks = () => {
 	return _allTasks;
 };
 
+const getWeekTasks = () => {
+	const _allTasks = [];
+	_ProjectList.forEach((Project) => {
+		const _tasklist = Project.getTasklist();
+		_tasklist.forEach((task) => {
+			// Check if Date is within one week, then push _allTasks
+		});
+	});
+	return _allTasks;
+};
+
+const getDayTasks = () => {
+	const _allTasks = [];
+	_ProjectList.forEach((Project) => {
+		const _tasklist = Project.getTasklist();
+		_tasklist.forEach((task) => {
+			// Check if Date is today, then push to _allTasks
+		});
+	});
+	return _allTasks;
+};
+
 // Methods
 const createProject = (projectName) => {
 	const newProject = Project.newProject(projectName);
@@ -54,6 +76,8 @@ createProject("Office");
 export default {
 	getProjectList,
 	getAllTasks,
+	getWeekTasks,
+	getDayTasks,
 	createProject,
 	deleteProject,
 	createTask,
