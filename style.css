@@ -1,96 +1,146 @@
 @import url("https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lilita+One&family=Playfair:wght@400;700&family=Roboto+Slab:wght@400;600;700&display=swap");
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 li {
-	list-style-type: none;
+  list-style-type: none;
 }
 
 button {
-	display: none;
+  display: none;
 }
 
 /* Start */
 
 :root {
-	--color-error: #ff3918;
-	--color-valid: rgb(170, 255, 170);
+  --color-error: #ff3918;
+  --color-valid: rgb(170, 255, 170);
 
-	--color-primary-400: #06d5ee;
-	--color-primary-500: #00b2d1;
-	--color-primary-600: #00899c;
-	--color-primary-700: #00666f;
+  --color-primary-400: #06d5ee;
+  --color-primary-500: #00b2d1;
+  --color-primary-600: #00899c;
+  --color-primary-700: #00666f;
 
-	--color-accent-200: #fff1f0;
-	--color-accent-300: #ffe8e7;
-	--color-accent-400: #ffc9ba;
-	--color-accent-500: #ff8060;
+  --color-accent-200: #fff1f0;
+  --color-accent-300: #ffe8e7;
+  --color-accent-400: #ffc9ba;
+  --color-accent-500: #ff8060;
 
-	--color-neutral-400: #eceff1;
-	--color-neutral-500: #b0bec5;
-	--color-neutral-600: #90a4ae;
+  --color-neutral-400: #eceff1;
+  --color-neutral-500: #b0bec5;
+  --color-neutral-600: #90a4ae;
 
-	--ff-gentium: "Gentium Book Plus", serif;
+  --ff-gentium: "Gentium Book Plus", serif;
 }
 
 /* Dialogs */
 dialog::backdrop {
-	background: rgb(0, 0, 0, 0.25);
-	backdrop-filter: blur(1.7px);
+  background: rgb(0, 0, 0, 0.25);
+  backdrop-filter: blur(1.7px);
 }
 
 dialog:modal {
-	background: var(--color-accent-200);
-	border: none;
-	border-radius: 1rem;
+  background: var(--color-accent-200);
+  border: none;
+  border-radius: 1rem;
 }
 
 fieldset {
-	border: none;
-	border-block: 3px solid var(--color-primary-700);
-	text-align: center;
-	padding: 1rem;
+  border: none;
+  border-block: 3px solid var(--color-primary-700);
+  text-align: center;
+  padding: 1rem;
 
-	display: grid;
-	gap: 0.7rem;
+  display: grid;
+  gap: 0.7rem;
 }
 
 fieldset input,
 fieldset textarea,
 fieldset select,
 fieldset button {
-	padding: 0.4rem;
+  padding: 0.4rem;
 }
 
 .form-item {
-	display: grid;
-	grid-template-rows: 1rem 1fr;
-	gap: 0.2rem;
-	text-align: left;
+  display: grid;
+  grid-template-rows: 1rem 1fr;
+  gap: 0.2rem;
+  text-align: left;
 }
 
 .form-buttons {
-	display: flex;
-	justify-content: space-between;
-	font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
 
-	& button {
-		font-weight: bold;
-	}
-	& .submit-button {
-		background: var(--color-valid);
-	}
+  & button {
+    font-weight: bold;
+  }
+  & .submit-button {
+    background: var(--color-valid);
+  }
 
-	& .cancel-button {
-		background: var(--color-accent-400);
-	}
+  & .cancel-button {
+    background: var(--color-accent-400);
+  }
 }
 legend {
-	padding-inline: 0.3rem;
-	font-weight: bold;
-	color: var(--color-primary-700);
+  padding-inline: 0.3rem;
+  font-weight: bold;
+  color: var(--color-primary-700);
 }
 
 /* Main */
 body {
-	background: var(--color-neutral-500);
-	font-family: var(--ff-gentium);
+  background: var(--color-neutral-500);
+  font-family: var(--ff-gentium);
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+
+  & main {
+    flex: 1;
+  }
+}
+
+header {
+  background: var(--color-primary-600);
+  padding-inline: 2rem;
+}
+
+footer {
+  background: var(--color-neutral-600);
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.sidebar {
+  background: var(--color-primary-500);
+  padding: 2rem;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tasklist {
+  & h2 {
+    text-align: center;
+  }
 }
