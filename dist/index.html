@@ -1,116 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script src="main.js" defer></script>
-		<link rel="stylesheet" href="modern-normalize.css" />
-		<link rel="stylesheet" href="style.css" />
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-		<title>To-do</title>
-	</head>
-	<body>
-		<header>
-			<h1 class="title">My Tasks List</h1>
-		</header>
-		<main>
-			<div class="sidebar">
-				<nav class="primary-nav">
-					<ul>
-						<li>
-							<p>General</p>
-						</li>
-						<li>
-							<p>Today</p>
-						</li>
-						<li>
-							<p>This Week</p>
-						</li>
-					</ul>
-				</nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>To-do</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="title">TO-DO LIST</h1>
+    </header>
+    <main>
+      <div class="sidebar">
+        <nav class="primary-nav">
+          <ul>
+            <li>
+              <p>General</p>
+            </li>
+            <li>
+              <p>Today</p>
+            </li>
+            <li>
+              <p>This Week</p>
+            </li>
+          </ul>
+        </nav>
 
-				<h2 class="projects-label">Projects</h2>
-				<nav class="projects-nav">
-					<ul class="projectsUL">
-						<!-- Projects -->
-					</ul>
-				</nav>
-			</div>
-		</main>
-		<footer><p>Created by @aarontalua</p></footer>
+        <h2 class="projects-label">Projects</h2>
+        <nav class="projects-nav">
+          <ul class="projectsUL">
+            <!-- Projects -->
+          </ul>
+        </nav>
+      </div>
+      <div class="tasklist">
+        <h2 class="tasks-label">Tasks</h2>
+        <ul class="tasksUL">
+          <!-- Tasks -->
+        </ul>
+      </div>
+    </main>
+    <footer><p>Created by @aarontalua</p></footer>
 
-		<!-- Buttons -->
-		<button id="AddTaskBtn">Add Task</button>
-		<button id="AddProjectBtn">Add Project</button>
-		<!-- Dialogs -->
-		<!-- Task Creation -->
-		<dialog id="todoDialog">
-			<form id="todoForm" name="todo">
-				<fieldset>
-					<legend>📌 New Task</legend>
-					<div class="form-item">
-						<label for="todoTitle">Title</label>
-						<input type="text" name="todoTitle" id="todoTitle" />
-					</div>
+    <!-- Buttons -->
+    <button id="AddTaskBtn">Add Task</button>
+    <button id="AddProjectBtn">Add Project</button>
+    <!-- Dialogs -->
+    <!-- Task Creation -->
+    <dialog id="todoDialog">
+      <form id="todoForm" name="todo">
+        <fieldset>
+          <legend>📌 New Task</legend>
+          <div class="form-item">
+            <label for="todoTitle">Title</label>
+            <input type="text" name="todoTitle" id="todoTitle" />
+          </div>
 
-					<div class="form-item">
-						<label for="todoDescription">Description</label>
-						<textarea
-							type="text"
-							name="todoDescription"
-							id="todoDescription"
-							rows="4"
-						></textarea>
-					</div>
+          <div class="form-item">
+            <label for="todoDescription">Description</label>
+            <textarea
+              type="text"
+              name="todoDescription"
+              id="todoDescription"
+              rows="4"
+            ></textarea>
+          </div>
 
-					<div class="form-item">
-						<label for="todoDue">Due</label>
-						<input type="date" name="todoDue" id="todoDue" />
-					</div>
+          <div class="form-item">
+            <label for="todoDue">Due</label>
+            <input type="date" name="todoDue" id="todoDue" />
+          </div>
 
-					<div class="form-item">
-						<label for="todoProject">Project</label>
-						<select name="todoProject" id="todoProject"></select>
-					</div>
+          <div class="form-item">
+            <label for="todoProject">Project</label>
+            <select name="todoProject" id="todoProject"></select>
+          </div>
 
-					<div class="form-item">
-						<label for="todoPrio">Priority</label>
-						<select name="todoPrio" id="todoPrio">
-							<option value="unimportant">Not Important</option>
-							<option value="normal" selected>Normal</option>
-							<option value="urgent">Urgent</option>
-						</select>
-					</div>
+          <div class="form-item">
+            <label for="todoPrio">Priority</label>
+            <select name="todoPrio" id="todoPrio">
+              <option value="unimportant">Not Important</option>
+              <option value="normal" selected>Normal</option>
+              <option value="urgent">Urgent</option>
+            </select>
+          </div>
 
-					<div class="form-buttons">
-						<button id="todoCancelBtn" class="cancel-button">CANCEL</button>
-						<button id="todoCloseBtn" class="close-button">CLOSE</button>
-						<button id="newTodo" class="submit-button">SUBMIT</button>
-					</div>
-				</fieldset>
-			</form>
-		</dialog>
+          <div class="form-buttons">
+            <button id="todoCancelBtn" class="cancel-button">CANCEL</button>
+            <button id="todoCloseBtn" class="close-button">CLOSE</button>
+            <button id="newTodo" class="submit-button">SUBMIT</button>
+          </div>
+        </fieldset>
+      </form>
+    </dialog>
 
-		<!-- Project Creation -->
-		<dialog id="projectDialog">
-			<form id="projectForm" name="project">
-				<fieldset>
-					<legend>📋 New Project</legend>
-					<div class="form-item">
-						<label for="projectName">Project Name</label>
-						<input type="text" id="projectName" />
-					</div>
-					<div class="form-item">
-						<label for="projectDue">Due Date</label>
-						<input type="date" name="projectDue" id="projectDue" />
-					</div>
-					<div class="form-buttons">
-						<button id="projectCancelBtn" class="cancel-button">CANCEL</button>
-						<button id="projectCloseBtn" class="close-button">CLOSE</button>
-						<button id="projectSubmitBtn" class="submit-button">SUBMIT</button>
-					</div>
-				</fieldset>
-			</form>
-		</dialog>
-	</body>
+    <!-- Project Creation -->
+    <dialog id="projectDialog">
+      <form id="projectForm" name="project">
+        <fieldset>
+          <legend>📋 New Project</legend>
+          <div class="form-item">
+            <label for="projectName">Project Name</label>
+            <input type="text" id="projectName" />
+          </div>
+          <div class="form-item">
+            <label for="projectDue">Due Date</label>
+            <input type="date" name="projectDue" id="projectDue" />
+          </div>
+          <div class="form-buttons">
+            <button id="projectCancelBtn" class="cancel-button">CANCEL</button>
+            <button id="projectCloseBtn" class="close-button">CLOSE</button>
+            <button id="projectSubmitBtn" class="submit-button">SUBMIT</button>
+          </div>
+        </fieldset>
+      </form>
+    </dialog>
+  </body>
 </html>
