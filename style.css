@@ -4,6 +4,14 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+nav li,
+button {
+  cursor: pointer;
+}
+
+ul {
   margin: 0;
   padding: 0;
 }
@@ -13,7 +21,7 @@ li {
 }
 
 button {
-  display: none;
+  /* display: none; */
 }
 
 /* Start */
@@ -40,6 +48,7 @@ button {
 }
 
 /* Dialogs */
+
 dialog::backdrop {
   background: rgb(0, 0, 0, 0.25);
   backdrop-filter: blur(1.7px);
@@ -103,6 +112,7 @@ body {
   font-family: var(--ff-gentium);
   min-height: 100vh;
   min-height: 100dvh;
+  margin: 0;
 
   display: flex;
   flex-direction: column;
@@ -127,20 +137,39 @@ footer {
 
 main {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 5fr;
 }
 
 .sidebar {
   background: var(--color-primary-500);
-  padding: 2rem;
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
+  padding: 2rem;
   gap: 1rem;
 }
 
 .tasklist {
+  display: flex;
+  flex-direction: column;
+
+  & button {
+    width: fit-content;
+    align-self: center;
+    padding: 1rem;
+  }
+
   & h2 {
     text-align: center;
   }
+}
+
+.tasklist li.taskItem {
+  display: flex;
+  background: tan;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 1rem;
+  margin: 0.2rem;
+  width: 100%;
 }

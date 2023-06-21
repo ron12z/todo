@@ -16,13 +16,13 @@
       <div class="sidebar">
         <nav class="primary-nav">
           <ul>
-            <li>
-              <p>General</p>
+            <li id="generalBtn">
+              <p>All Tasks</p>
             </li>
-            <li>
+            <li id="todayBtn">
               <p>Today</p>
             </li>
-            <li>
+            <li id="weekBtn">
               <p>This Week</p>
             </li>
           </ul>
@@ -31,22 +31,31 @@
         <h2 class="projects-label">Projects</h2>
         <nav class="projects-nav">
           <ul class="projectsUL">
+            <button id="AddProjectBtn">Add Project</button>
             <!-- Projects -->
           </ul>
         </nav>
       </div>
       <div class="tasklist">
         <h2 class="tasks-label">Tasks</h2>
+        <button id="AddTaskBtn">Add Task</button>
         <ul class="tasksUL">
           <!-- Tasks -->
+
+          <li class="taskItem">
+            <h4 class="task-title">Sample Task</h4>
+            <p class="task-description">Sample Description</p>
+            <p class="task-due">09/09/2023</p>
+          </li>
         </ul>
       </div>
     </main>
     <footer><p>Created by @aarontalua</p></footer>
 
     <!-- Buttons -->
-    <button id="AddTaskBtn">Add Task</button>
-    <button id="AddProjectBtn">Add Project</button>
+    <!-- <button id="AddTaskBtn">Add Task</button> -->
+    <!-- <button id="AddProjectBtn">Add Project</button> -->
+
     <!-- Dialogs -->
     <!-- Task Creation -->
     <dialog id="todoDialog">
