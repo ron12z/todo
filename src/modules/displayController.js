@@ -3,30 +3,64 @@
 import Logic from "./logicController.js";
 
 // Helper Functions
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
+function clearTaskList() {
+  const tasksUL = document.querySelector(".tasksUL");
+  removeAllChildNodes(tasksUL);
+}
+
 const todoModalInit = () => {
-	const originList = Logic.getProjectList();
+  const originList = Logic.getProjectList();
 
-	document.querySelector("#todoDue").valueAsDate = new Date();
+  document.querySelector("#todoDue").valueAsDate = new Date();
 
-	originList.forEach((project) => {
-		const projectName = project.getProjectName();
-		_projectPicker.innerHTML += `
+  originList.forEach((project) => {
+    const projectName = project.getProjectName();
+    _projectPicker.innerHTML += `
         <option value="${projectName}">${projectName}</option>
         `;
-	});
+  });
 };
 
 const projectModalInit = () => {
-	document.querySelector("#projectDue").valueAsDate = new Date();
+  document.querySelector("#projectDue").valueAsDate = new Date();
 };
 
 const renderAllTasks = () => {
-	const _tasklist = Logic.getAllTasks();
-	// Render here
+  clearTaskList();
+  const tasksUL = document.querySelector(".tasksUL");
+  const _tasklist = Logic.getAllTasks();
+
+  _tasklist.forEach((task) => {
+    const taskItem = document.createElement("li");
+    const taskTitle = document.createElement("h4");
+    const taskDesc = document.createElement("p");
+    const taskDue = document.createElement("p");
+
+    taskItem.setAttribute("data-id", task.getID());
+    taskItem.classList.add("taskItem");
+    taskTitle.classList.add("task-title");
+    taskDesc.classList.add("task-description");
+    taskDue.classList.add("task-due");
+
+    taskTitle.textContent = task.getTitle();
+    taskDesc.textContent = task.getDesc();
+    taskDue.textContent = task.getDueDate();
+
+    taskItem.append(taskTitle, taskDesc, taskDue);
+    tasksUL.append(taskItem);
+
+    console.log(task);
+  });
 };
 
 const resetProjectPicker = () => {
-	_projectPicker.innerHTML = "";
+  removeAllChildNodes(_projectPicker);
 };
 
 // Variables
@@ -38,6 +72,9 @@ const todoCancelBtn = document.querySelector("#todoCancelBtn");
 const todoDialog = document.querySelector("#todoDialog");
 const todoForm = document.querySelector("#todoForm");
 const _projectPicker = document.querySelector("#todoProject");
+const generalBtn = document.querySelector("#generalBtn");
+const todayBtn = document.querySelector("#todayBtn");
+const weekBtn = document.querySelector("#weekBtn");
 
 // Project creation
 const addProjectBtn = document.querySelector("#AddProjectBtn");
@@ -50,52 +87,57 @@ const projectForm = document.querySelector("#projectForm");
 // Event Listeners
 // Task creation
 addTaskBtn.addEventListener("click", (e) => {
-	todoDialog.showModal();
-	todoModalInit();
+  todoDialog.showModal();
+  todoModalInit();
 });
 
 todoSubmitBtn.addEventListener("click", (e) => {
-	e.preventDefault();
-	Logic.createTask(e);
-	todoDialog.close();
-	resetProjectPicker();
-	todoForm.reset();
+  e.preventDefault();
+  Logic.createTask(e);
+  todoDialog.close();
+  resetProjectPicker();
+  todoForm.reset();
+  renderAllTasks();
 });
 
 todoCloseBtn.addEventListener("click", (e) => {
-	e.preventDefault();
-	resetProjectPicker();
-	todoDialog.close();
+  e.preventDefault();
+  resetProjectPicker();
+  todoDialog.close();
 });
 
 todoCancelBtn.addEventListener("click", (e) => {
-	e.preventDefault();
-	resetProjectPicker();
-	todoForm.reset();
-	todoDialog.close();
+  e.preventDefault();
+  resetProjectPicker();
+  todoForm.reset();
+  todoDialog.close();
 });
 
 // Project Creation
 addProjectBtn.addEventListener("click", (e) => {
-	projectDialog.showModal();
-	projectModalInit();
+  projectDialog.showModal();
+  projectModalInit();
 });
 
 projectSubmitBtn.addEventListener("click", (e) => {
-	e.preventDefault();
-	const name = projectName.value;
-	Logic.createProject(name);
-	projectForm.reset();
-	projectDialog.close();
+  e.preventDefault();
+  const name = projectName.value;
+  Logic.createProject(name);
+  projectForm.reset();
+  projectDialog.close();
 });
 
 projectCloseBtn.addEventListener("click", (e) => {
-	e.preventDefault();
-	projectDialog.close();
+  e.preventDefault();
+  projectDialog.close();
 });
 
 projectCancelBtn.addEventListener("click", (e) => {
-	e.preventDefault();
-	projectDialog.close();
-	projectForm.reset();
+  e.preventDefault();
+  projectDialog.close();
+  projectForm.reset();
+});
+
+generalBtn.addEventListener("click", (e) => {
+  renderAllTasks();
 });
