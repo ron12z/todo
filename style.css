@@ -171,12 +171,25 @@ main {
   }
 }
 
+.tasksUL {
+  --_space: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--_space);
+  padding: var(--_space);
+}
+
 .tasklist li.taskItem {
   display: flex;
   background: tan;
   justify-content: space-between;
   align-items: center;
   padding-inline: 1rem;
-  margin: 0.2rem;
   width: 100%;
+}
+
+button.deleter {
+  padding: 0.5rem;
+  border: 2px solid var(--color-neutral-600);
+  border-radius: 0.2rem;
 }
