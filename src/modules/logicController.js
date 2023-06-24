@@ -4,6 +4,7 @@
 
 import Project from "./project.js";
 import Todo from "./todo.js";
+import { format, differenceInCalendarDays, addDays } from "date-fns";
 
 const _ProjectList = [];
 
@@ -26,7 +27,14 @@ const getWeekTasks = () => {
   _ProjectList.forEach((Project) => {
     const _tasklist = Project.getTasklist();
     _tasklist.forEach((task) => {
-      // Check if Date is within one week, then push _allTasks
+      const taskDate = new Date(task.getDueDate());
+      const endOfWeek = addDays(new Date(), 7);
+      const difference = differenceInCalendarDays(taskDate, endOfWeek);
+      const withinWeek = difference >= -7 && difference <= 0;
+
+      if (withinWeek) {
+        _allTasks.push(task);
+      }
     });
   });
   return _allTasks;
@@ -37,7 +45,11 @@ const getDayTasks = () => {
   _ProjectList.forEach((Project) => {
     const _tasklist = Project.getTasklist();
     _tasklist.forEach((task) => {
-      // Check if Date is today, then push to _allTasks
+      const taskDate = task.getDueDate();
+      const fns = format(new Date(), "yyyy-MM-dd");
+      if (taskDate == fns) {
+        _allTasks.push(task);
+      }
     });
   });
   return _allTasks;
@@ -65,7 +77,9 @@ const createTask = (e) => {
   const Project = _ProjectList.find(
     (project) => project.getProjectName() == todoProject.value
   );
+
   const newTask = Todo.newTask(title, desc, date, priority);
+  newTask.project = Project;
   Project.addItem(newTask);
 };
 

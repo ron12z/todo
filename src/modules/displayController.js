@@ -36,12 +36,11 @@ const projectModalInit = () => {
   document.querySelector("#projectDue").valueAsDate = new Date();
 };
 
-const renderAllTasks = () => {
+const render = (tasklist) => {
   clearTaskList();
   const tasksUL = document.querySelector(".tasksUL");
-  const _tasklist = Logic.getAllTasks();
 
-  _tasklist.forEach((task) => {
+  tasklist.forEach((task) => {
     const taskItem = document.createElement("li");
     const taskTitle = document.createElement("h4");
     const taskDesc = document.createElement("p");
@@ -57,11 +56,25 @@ const renderAllTasks = () => {
     taskDesc.textContent = task.getDesc();
     taskDue.textContent = task.getDueDate();
 
-    taskItem.append(taskTitle, taskDesc, taskDue);
-    tasksUL.append(taskItem);
+    const deleter = document.createElement("button");
+    deleter.classList.add("deleter");
+    deleter.textContent = "❌";
+    deleter.addEventListener("click", (e) => {
+      task.project.removeItem(task);
+      const target = document.querySelector(
+        `.taskItem[data-id="${task.getID()}"]`
+      );
+      target.remove();
+    });
 
-    console.log(task);
+    taskItem.append(taskTitle, taskDesc, taskDue, deleter);
+    tasksUL.append(taskItem);
   });
+};
+
+const renderAllTasks = () => {
+  const _tasklist = Logic.getAllTasks();
+  render(_tasklist);
 };
 
 const renderProjects = () => {
@@ -81,6 +94,11 @@ const renderProjects = () => {
 
     newProject.append(projectName);
     projectsUL.append(newProject);
+
+    newProject.addEventListener("click", (e) => {
+      const _tasklist = project.getTasklist();
+      render(_tasklist);
+    });
   });
 };
 
@@ -169,9 +187,11 @@ generalBtn.addEventListener("click", (e) => {
 });
 
 todayBtn.addEventListener("click", (e) => {
-  // show today
+  const _today = Logic.getDayTasks();
+  render(_today);
 });
 
 weekBtn.addEventListener("click", (e) => {
-  // show week
+  const _week = Logic.getWeekTasks();
+  render(_week);
 });
