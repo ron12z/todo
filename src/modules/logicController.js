@@ -71,7 +71,6 @@ const createTask = (e) => {
 
 //Create Initial Project
 createProject("General");
-createProject("Office");
 
 export default {
   getProjectList,

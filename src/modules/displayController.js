@@ -14,6 +14,11 @@ function clearTaskList() {
   removeAllChildNodes(tasksUL);
 }
 
+function clearProjectList() {
+  const projectsUL = document.querySelector(".projectsUL");
+  removeAllChildNodes(projectsUL);
+}
+
 const todoModalInit = () => {
   const originList = Logic.getProjectList();
 
@@ -56,6 +61,26 @@ const renderAllTasks = () => {
     tasksUL.append(taskItem);
 
     console.log(task);
+  });
+};
+
+const renderProjects = () => {
+  clearProjectList();
+  const _projectList = Logic.getProjectList();
+  const projectsUL = document.querySelector(".projectsUL");
+
+  _projectList.forEach((project) => {
+    const newProject = document.createElement("li");
+    const projectName = document.createElement("h3");
+
+    newProject.classList.add("project-item");
+    newProject.setAttribute("data-id", project.getID());
+    projectName.classList.add("project-name");
+
+    projectName.textContent = project.getProjectName();
+
+    newProject.append(projectName);
+    projectsUL.append(newProject);
   });
 };
 
@@ -125,6 +150,7 @@ projectSubmitBtn.addEventListener("click", (e) => {
   Logic.createProject(name);
   projectForm.reset();
   projectDialog.close();
+  renderProjects();
 });
 
 projectCloseBtn.addEventListener("click", (e) => {
@@ -140,4 +166,12 @@ projectCancelBtn.addEventListener("click", (e) => {
 
 generalBtn.addEventListener("click", (e) => {
   renderAllTasks();
+});
+
+todayBtn.addEventListener("click", (e) => {
+  // show today
+});
+
+weekBtn.addEventListener("click", (e) => {
+  // show week
 });

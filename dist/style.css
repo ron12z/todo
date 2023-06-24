@@ -20,6 +20,13 @@ li {
   list-style-type: none;
 }
 
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
 button {
   /* display: none; */
 }
